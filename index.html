@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Royalty Perfumes — Decants Originales en Chile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Syne:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black: #080808;
+  --white: #F9F9F7;
+  --gray-100: #F0EFED;
+  --gray-200: #DDDBD8;
+  --gray-400: #9A9690;
+  --gray-600: #5A5750;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--white);
+  color: var(--black);
+  font-family: 'Syne', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 999;
+  background: rgba(8,8,8,0.97);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  height: 60px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  animation: fadeDown 0.6s ease both;
+}
+@keyframes fadeDown {
+  from { opacity:0; transform:translateY(-10px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.nav-cta {
+  background: var(--white);
+  color: var(--black);
+  padding: 9px 20px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: opacity .2s;
+  border: 2px solid var(--white);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.nav-cta:hover { opacity: .85; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  padding-top: 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+@media(max-width:768px){
+  .hero { grid-template-columns:1fr; }
+  .hero-right {
+    display: block;
+    height: 100vw;
+    min-height: 360px;
+    max-height: 560px;
+  }
+}
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 72px 60px;
+  border-right: 1px solid var(--gray-200);
+}
+@media(max-width:768px){ .hero-left { padding:60px 28px; border-right:none; } }
+
+.kicker {
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  margin-bottom: 28px;
+  animation: up .8s ease .1s both;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 6vw, 5.4rem);
+  font-weight: 900;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin-bottom: 28px;
+  animation: up .8s ease .2s both;
+}
+h1 em { font-style:italic; font-weight:400; }
+
+.hero-body {
+  font-size: .96rem;
+  line-height: 1.82;
+  color: var(--gray-600);
+  max-width: 400px;
+  margin-bottom: 44px;
+  animation: up .8s ease .3s both;
+}
+.hero-body strong { color:var(--black); font-weight:500; }
+
+/* ── 4 COLLECTION BUTTONS ── */
+.collection-btns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 52px;
+  animation: up .8s ease .4s both;
+}
+.col-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 16px 18px;
+  border: 2px solid var(--black);
+  text-decoration: none;
+  color: var(--black);
+  transition: all .2s;
+  background: var(--white);
+}
+.col-btn:hover { background: var(--black); color: var(--white); }
+.col-btn-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  transition: color .2s;
+}
+.col-btn:hover .col-btn-label { color: rgba(255,255,255,.45); }
+.col-btn-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.col-btn-arrow {
+  font-size: .7rem;
+  margin-top: 6px;
+  letter-spacing: .1em;
+  opacity: .5;
+}
+
+/* ── STATS ── */
+.hero-stats {
+  display: flex;
+  gap: 28px;
+  padding-top: 44px;
+  border-top: 1px solid var(--gray-200);
+  flex-wrap: wrap;
+  animation: up .8s ease .55s both;
+}
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.stat-lbl {
+  font-size: .62rem;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  margin-top: 4px;
+}
+
+/* ── HERO RIGHT — SLIDESHOW ── */
+.hero-right {
+  background: var(--black);
+  position: relative;
+  overflow: hidden;
+  animation: up .8s ease .3s both;
+}
+
+.slideshow {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+.slide.active { opacity: 1; }
+
+/* dot indicators */
+.slide-dots {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+.dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.3);
+  cursor: pointer;
+  transition: all .3s;
+}
+.dot.active { background: var(--white); transform: scale(1.3); }
+
+/* overlay gradient so text on image stays readable */
+.slide-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(8,8,8,.15) 0%, rgba(8,8,8,.45) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+
+/* slide caption */
+.slide-caption {
+  position: absolute;
+  bottom: 52px;
+  left: 0; right: 0;
+  text-align: center;
+  font-size: .6rem;
+  font-weight: 700;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.55);
+  z-index: 10;
+}
+
+/* ── MARQUEE ── */
+.marquee-wrap {
+  background: var(--black);
+  border-top: 1px solid rgba(255,255,255,.05);
+  border-bottom: 1px solid rgba(255,255,255,.05);
+  padding: 12px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.marquee-track {
+  display: inline-flex;
+  animation: ticker 26s linear infinite;
+}
+.marquee-track span {
+  font-size: .62rem; font-weight: 700; letter-spacing: .24em;
+  text-transform: uppercase; color: rgba(255,255,255,.38); padding: 0 28px;
+}
+.marquee-track span.dot2 { color: rgba(255,255,255,.12); padding: 0 4px; letter-spacing: 0; }
+@keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ── BRANDS ── */
+.brands-section {
+  background: var(--gray-100);
+  border-top: 1px solid var(--gray-200);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 64px;
+}
+@media(max-width:768px){ .brands-section { padding:48px 28px; } }
+
+.brands-header {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  margin-bottom: 36px; flex-wrap: wrap; gap: 16px;
+}
+.s-tag {
+  font-size: .63rem; font-weight: 700; letter-spacing: .3em;
+  text-transform: uppercase; color: var(--gray-400); margin-bottom: 14px;
+}
+.s-h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+  font-weight: 900; line-height: 1.08; letter-spacing: -.02em;
+}
+.s-h2 em { font-style: italic; font-weight: 400; }
+
+.brands-grid { display: flex; flex-wrap: wrap; gap: 7px; }
+.brand-tag {
+  background: var(--white); border: 1px solid var(--gray-200);
+  padding: 7px 15px; font-size: .68rem; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--black); text-decoration: none; transition: all .18s;
+}
+.brand-tag:hover { background: var(--black); color: var(--white); border-color: var(--black); }
+
+.btn-black {
+  background: var(--black); color: var(--white);
+  padding: 13px 30px; font-size: .72rem; font-weight: 700;
+  letter-spacing: .18em; text-transform: uppercase;
+  text-decoration: none; display: inline-block;
+  border: 2px solid var(--black); transition: opacity .2s; flex-shrink: 0;
+}
+.btn-black:hover { opacity: .8; }
+
+/* ── REVIEWS ── */
+.reviews-section { padding: 80px 64px; }
+@media(max-width:768px){ .reviews-section { padding: 64px 28px; } }
+
+.reviews-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1px; background: var(--gray-200);
+  border: 1px solid var(--gray-200); margin-top: 48px;
+}
+@media(max-width:900px){ .reviews-grid { grid-template-columns: 1fr; } }
+
+.review-card {
+  background: var(--white); padding: 38px 30px; transition: background .2s;
+}
+.review-card:hover { background: var(--gray-100); }
+.rev-stars { font-size: .72rem; letter-spacing: .18em; color: var(--black); margin-bottom: 18px; }
+.rev-q {
+  font-family: 'Playfair Display', serif; font-size: 1.06rem;
+  font-style: italic; font-weight: 400; line-height: 1.65;
+  color: var(--black); margin-bottom: 22px;
+}
+.rev-name { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.rev-loc  { font-size: .68rem; color: var(--gray-400); margin-top: 3px; }
+
+/* ── FINAL CTA ── */
+.final-section {
+  background: var(--black); color: var(--white);
+  text-align: center; padding: 110px 40px;
+  position: relative; overflow: hidden;
+}
+.final-section::before {
+  content: ''; position: absolute;
+  top: -30%; left: 50%; transform: translateX(-50%);
+  width: 700px; height: 700px;
+  background: radial-gradient(ellipse, rgba(255,255,255,.035), transparent 70%);
+  pointer-events: none;
+}
+.final-inner { position: relative; max-width: 700px; margin: 0 auto; }
+
+.final-tag {
+  font-size: .63rem; font-weight: 700; letter-spacing: .35em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.55);  /* ← más claro */
+  margin-bottom: 24px;
+}
+.final-h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.6rem, 7vw, 5.5rem);
+  font-weight: 900; line-height: 1.0; letter-spacing: -.02em;
+  color: var(--white); margin-bottom: 22px;
+}
+.final-h2 em { font-style: italic; font-weight: 400; color: rgba(255,255,255,.5); }
+.final-body {
+  font-size: .94rem; line-height: 1.82;
+  color: rgba(255,255,255,.60);  /* ← más claro */
+  max-width: 440px; margin: 0 auto 44px;
+}
+.btn-white {
+  background: var(--white); color: var(--black);
+  padding: 16px 44px; font-size: .73rem; font-weight: 700;
+  letter-spacing: .2em; text-transform: uppercase;
+  text-decoration: none; display: inline-block;
+  border: 2px solid var(--white); transition: opacity .2s;
+}
+.btn-white:hover { opacity: .85; }
+.final-note {
+  margin-top: 20px; font-size: .72rem;
+  color: rgba(255,255,255,.35);  /* ← ligeramente más visible */
+  letter-spacing: .08em;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--black);
+  border-top: 1px solid rgba(255,255,255,.06);
+  padding: 24px 36px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 14px;
+}
+.f-logo {
+  font-family: 'Playfair Display', serif; font-size: .95rem;
+  font-weight: 700; color: rgba(255,255,255,.4); letter-spacing: .08em;
+}
+.f-links { display: flex; gap: 18px; list-style: none; flex-wrap: wrap; }
+.f-links a {
+  font-size: .65rem; font-weight: 500; letter-spacing: .1em;
+  text-transform: uppercase; color: rgba(255,255,255,.22);
+  text-decoration: none; transition: color .2s;
+}
+.f-links a:hover { color: rgba(255,255,255,.65); }
+.f-copy { font-size: .62rem; color: rgba(255,255,255,.14); letter-spacing: .04em; }
+
+/* ── REVEAL ── */
+.reveal { opacity:0; transform:translateY(28px); transition:opacity .75s ease,transform .75s ease; }
+.reveal.in { opacity:1; transform:translateY(0); }
+
+@keyframes up {
+  from { opacity:0; transform:translateY(22px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://royaltyperfumes.cl" class="nav-logo">ROYALTYPERFUMES</a>
+  <a href="https://royaltyperfumes.cl/collections/todos-los-decants-1" class="nav-cta">Ver Decants →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+
+  <!-- LEFT -->
+  <div class="hero-left">
+    <p class="kicker">Decants 100% Originales · Envíos a Todo Chile</p>
+
+    <h1>El lujo que<br>siempre quisiste.<br><em>Al precio que<br>mereces.</em></h1>
+
+    <p class="hero-body">
+      <strong>Dior, Giorgio Armani, Tom Ford, YSL, Parfums de Marly.</strong><br>
+      Las fragancias más deseadas del mundo, en formato decant. Prueba antes de comprar el frasco completo — sin arriesgarte.
+    </p>
+
+    <!-- 4 COLLECTION BUTTONS -->
+    <div class="collection-btns">
+      <a href="https://royaltyperfumes.cl/collections/decants-hombre" class="col-btn">
+        <span class="col-btn-label">Colección</span>
+        <span class="col-btn-name">Decants<br>Hombre</span>
+        <span class="col-btn-arrow">→</span>
+      </a>
+      <a href="https://royaltyperfumes.cl/collections/decants-mujer" class="col-btn">
+        <span class="col-btn-label">Colección</span>
+        <span class="col-btn-name">Decants<br>Mujer</span>
+        <span class="col-btn-arrow">→</span>
+      </a>
+      <a href="https://royaltyperfumes.cl/collections/pack-decants" class="col-btn">
+        <span class="col-btn-label">La mejor oferta</span>
+        <span class="col-btn-name">Pack<br>Decants</span>
+        <span class="col-btn-arrow">→</span>
+      </a>
+      <a href="https://royaltyperfumes.cl/collections/todos-los-decants-1" class="col-btn">
+        <span class="col-btn-label">Catálogo completo</span>
+        <span class="col-btn-name">Todos los<br>Decants</span>
+        <span class="col-btn-arrow">→</span>
+      </a>
+    </div>
+
+    <!-- STATS -->
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">+100</div>
+        <div class="stat-lbl">Marcas disponibles</div>
+      </div>
+      <div>
+        <div class="stat-num">+7.000</div>
+        <div class="stat-lbl">Productos entregados</div>
+      </div>
+      <div>
+        <div class="stat-num">2–5 días</div>
+        <div class="stat-lbl">Despacho hábil</div>
+      </div>
+      <div>
+        <div class="stat-num">100%</div>
+        <div class="stat-lbl">Originales garantizado</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT — SLIDESHOW -->
+  <div class="hero-right">
+    <div class="slideshow" id="slideshow">
+
+      <div class="slide active" style="background-image:url('https://cdn.shopify.com/s/files/1/0748/3611/5705/files/IMG_2320.jpg?v=1775700055');">
+        <div class="slide-caption">Parfums de Marly · Layton</div>
+      </div>
+      <div class="slide" style="background-image:url('https://cdn.shopify.com/s/files/1/0748/3611/5705/files/IMG_2321.jpg?v=1775700055');">
+        <div class="slide-caption">YSL · Babycat</div>
+      </div>
+      <div class="slide" style="background-image:url('https://cdn.shopify.com/s/files/1/0748/3611/5705/files/IMG_2327.jpg?v=1775700055');">
+        <div class="slide-caption">Jean Paul Gaultier · Le Beau</div>
+      </div>
+      <div class="slide" style="background-image:url('https://cdn.shopify.com/s/files/1/0748/3611/5705/files/IMG_2350.jpg?v=1775700054');">
+        <div class="slide-caption">Valentino · Born in Roma</div>
+      </div>
+      <div class="slide" style="background-image:url('https://cdn.shopify.com/s/files/1/0748/3611/5705/files/IMG_2351.jpg?v=1775700054');">
+        <div class="slide-caption">Emporio Armani · Power of You</div>
+      </div>
+    </div>
+    <div class="slide-overlay"></div>
+    <div class="slide-dots" id="dots">
+      <div class="dot active" onclick="goTo(0)"></div><div class="dot" onclick="goTo(1)"></div><div class="dot" onclick="goTo(2)"></div><div class="dot" onclick="goTo(3)"></div><div class="dot" onclick="goTo(4)"></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span>Giorgio Armani</span><span class="dot2">·</span><span>Tom Ford</span><span class="dot2">·</span>
+    <span>Dior</span><span class="dot2">·</span><span>YSL</span><span class="dot2">·</span>
+    <span>Parfums de Marly</span><span class="dot2">·</span><span>Creed</span><span class="dot2">·</span>
+    <span>Louis Vuitton</span><span class="dot2">·</span><span>Byredo</span><span class="dot2">·</span>
+    <span>Prada</span><span class="dot2">·</span><span>Versace</span><span class="dot2">·</span>
+    <span>Mancera</span><span class="dot2">·</span><span>Initio</span><span class="dot2">·</span>
+    <span>Mugler</span><span class="dot2">·</span><span>Carolina Herrera</span><span class="dot2">·</span>
+    <span>Hermès</span><span class="dot2">·</span><span>Gucci</span><span class="dot2">·</span>
+    <span>Valentino</span><span class="dot2">·</span><span>Nishane</span><span class="dot2">·</span>
+    <span>Montale</span><span class="dot2">·</span><span>Xerjoff</span><span class="dot2">·</span>
+    <span>Giorgio Armani</span><span class="dot2">·</span><span>Tom Ford</span><span class="dot2">·</span>
+    <span>Dior</span><span class="dot2">·</span><span>YSL</span><span class="dot2">·</span>
+    <span>Parfums de Marly</span><span class="dot2">·</span><span>Creed</span><span class="dot2">·</span>
+    <span>Louis Vuitton</span><span class="dot2">·</span><span>Byredo</span><span class="dot2">·</span>
+    <span>Prada</span><span class="dot2">·</span><span>Versace</span><span class="dot2">·</span>
+    <span>Mancera</span><span class="dot2">·</span><span>Initio</span><span class="dot2">·</span>
+    <span>Mugler</span><span class="dot2">·</span><span>Carolina Herrera</span><span class="dot2">·</span>
+    <span>Hermès</span><span class="dot2">·</span><span>Gucci</span><span class="dot2">·</span>
+    <span>Valentino</span><span class="dot2">·</span><span>Nishane</span><span class="dot2">·</span>
+    <span>Montale</span><span class="dot2">·</span><span>Xerjoff</span><span class="dot2">·</span>
+  </div>
+</div>
+
+<!-- BRANDS -->
+<div class="brands-section reveal">
+  <div class="brands-header">
+    <div>
+      <div class="s-tag">Catálogo de marcas</div>
+      <h2 class="s-h2">+100 marcas.<br><em>Una sola tienda.</em></h2>
+    </div>
+    <a href="https://royaltyperfumes.cl/collections/todos-los-decants-1" class="btn-black">Ver todo el catálogo</a>
+  </div>
+  <div class="brands-grid">
+    <a href="https://royaltyperfumes.cl/collections/dior" class="brand-tag">Dior</a>
+    <a href="https://royaltyperfumes.cl/collections/giorgio-armani" class="brand-tag">Giorgio Armani</a>
+    <a href="https://royaltyperfumes.cl/collections/tom-ford" class="brand-tag">Tom Ford</a>
+    <a href="https://royaltyperfumes.cl/collections/ysl" class="brand-tag">YSL</a>
+    <a href="https://royaltyperfumes.cl/collections/parfums-de-marly" class="brand-tag">Parfums de Marly</a>
+    <a href="https://royaltyperfumes.cl/collections/louis-vuitton" class="brand-tag">Louis Vuitton</a>
+    <a href="https://royaltyperfumes.cl/collections/byredo" class="brand-tag">Byredo</a>
+    <a href="https://royaltyperfumes.cl/collections/prada" class="brand-tag">Prada</a>
+    <a href="https://royaltyperfumes.cl/collections/versace" class="brand-tag">Versace</a>
+    <a href="https://royaltyperfumes.cl/collections/hermes" class="brand-tag">Hermès</a>
+    <a href="https://royaltyperfumes.cl/collections/gucci" class="brand-tag">Gucci</a>
+    <a href="https://royaltyperfumes.cl/collections/carolina-herrera" class="brand-tag">Carolina Herrera</a>
+    <a href="https://royaltyperfumes.cl/collections/mugler" class="brand-tag">Mugler</a>
+    <a href="https://royaltyperfumes.cl/collections/mancera" class="brand-tag">Mancera</a>
+    <a href="https://royaltyperfumes.cl/collections/initio" class="brand-tag">Initio</a>
+    <a href="https://royaltyperfumes.cl/collections/montale" class="brand-tag">Montale</a>
+    <a href="https://royaltyperfumes.cl/collections/xerjoff" class="brand-tag">Xerjoff</a>
+    <a href="https://royaltyperfumes.cl/collections/nishane" class="brand-tag">Nishane</a>
+    <a href="https://royaltyperfumes.cl/collections/amouage" class="brand-tag">Amouage</a>
+    <a href="https://royaltyperfumes.cl/collections/valentino" class="brand-tag">Valentino</a>
+    <a href="https://royaltyperfumes.cl/collections/maison-francis-kurkdjian" class="brand-tag">Maison Francis Kurkdjian</a>
+    <a href="https://royaltyperfumes.cl/collections/ralph-lauren" class="brand-tag">Ralph Lauren</a>
+    <a href="https://royaltyperfumes.cl/collections/burberry" class="brand-tag">Burberry</a>
+    <a href="https://royaltyperfumes.cl/collections/hugo-boss" class="brand-tag">Hugo Boss</a>
+    <a href="https://royaltyperfumes.cl/collections/jean-paul-gaultier" class="brand-tag">Jean Paul Gaultier</a>
+    <a href="https://royaltyperfumes.cl/collections/lattafa" class="brand-tag">Lattafa</a>
+    <a href="https://royaltyperfumes.cl/collections/al-haramain" class="brand-tag">Al Haramain</a>
+    <a href="https://royaltyperfumes.cl/collections/roja-parfums" class="brand-tag">Roja Parfums</a>
+    <a href="https://royaltyperfumes.cl/collections/nasomatto" class="brand-tag">Nasomatto</a>
+    <a href="https://royaltyperfumes.cl/collections/todos-los-decants-1" class="brand-tag">+ 70 más →</a>
+  </div>
+</div>
+
+<!-- REVIEWS -->
+<section class="reviews-section reveal">
+  <div class="s-tag">Lo que dicen nuestros clientes</div>
+  <h2 class="s-h2">Hablan los que<br><em>ya compraron.</em></h2>
+
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="rev-stars">★★★★★</div>
+      <p class="rev-q">"Llevaba meses queriendo probar Layton de Parfums de Marly pero no quería pagar el frasco completo sin conocerlo. Pedí el decant y llegó perfectamente embalado. Ahora lo uso todos los días. Compra obligada."</p>
+      <div class="rev-name">Sebastián M.</div>
+      <div class="rev-loc">Santiago, Chile</div>
+    </div>
+    <div class="review-card">
+      <div class="rev-stars">★★★★★</div>
+      <p class="rev-q">"Hice el pack de 5 decants y fue la mejor decisión. Elegí marcas que nunca hubiera comprado a ciegas — Tom Ford, Initio, Byredo. Encontré dos que ahora son mis favoritos. El embalaje es impecable, muy profesional."</p>
+      <div class="rev-name">Catalina R.</div>
+      <div class="rev-loc">Viña del Mar, Chile</div>
+    </div>
+    <div class="review-card">
+      <div class="rev-stars">★★★★★</div>
+      <p class="rev-q">"No tenía idea de qué perfume regalarle a mi pareja. Me asesoraron por Instagram, les describí lo que buscaba y me recomendaron tres opciones. Acerté perfecto. Llegó etiquetado y todo original. Volvería a comprar sin dudar."</p>
+      <div class="rev-name">Diego F.</div>
+      <div class="rev-loc">Concepción, Chile</div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-section">
+  <div class="final-inner reveal">
+    <div class="final-tag">Royalty Perfumes · Chile</div>
+    <h2 class="final-h2">Tu fragancia<br>perfecta <em>existe.</em><br>Encuéntrala.</h2>
+    <p class="final-body">
+      Más de 100 marcas. +7.000 productos entregados. Sin comprometerte a un frasco completo. Prueba, descubre, quédate con lo que te define.
+    </p>
+    <a href="https://royaltyperfumes.cl/collections/todos-los-decants-1" class="btn-white">Explorar todos los decants →</a>
+    <p class="final-note">🇨🇱 Despacho a todo Chile · 2–5 días hábiles · 100% originales garantizado</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-logo">ROYALTYPERFUMES</div>
+  <ul class="f-links">
+    <li><a href="https://royaltyperfumes.cl/collections/decants-hombre">Hombre</a></li>
+    <li><a href="https://royaltyperfumes.cl/collections/decants-mujer">Mujer</a></li>
+    <li><a href="https://royaltyperfumes.cl/collections/pack-decants">Packs</a></li>
+    <li><a href="https://www.instagram.com/royaltyperfumes.cl/">Instagram</a></li>
+    <li><a href="https://www.tiktok.com/@royaltyperfumes.cl">TikTok</a></li>
+  </ul>
+  <div class="f-copy">© 2026 Royalty Perfumes · Chile</div>
+</footer>
+
+<script>
+// ── SCROLL REVEAL ──
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// ── SLIDESHOW ──
+const slides = document.querySelectorAll('.slide');
+const dotEls = document.querySelectorAll('#dots .dot');
+let current = 0;
+let timer;
+
+function goTo(n) {
+  slides[current].classList.remove('active');
+  dotEls[current].classList.remove('active');
+  current = (n + slides.length) % slides.length;
+  slides[current].classList.add('active');
+  dotEls[current].classList.add('active');
+}
+
+function startAuto() { timer = setInterval(() => goTo(current + 1), 3000); }
+function stopAuto()  { clearInterval(timer); }
+
+const panel = document.querySelector('.hero-right');
+panel.addEventListener('mouseenter', stopAuto);
+panel.addEventListener('mouseleave', startAuto);
+startAuto();
+</script>
+</body>
+</html>
